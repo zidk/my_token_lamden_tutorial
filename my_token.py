@@ -8,7 +8,8 @@ S = Hash(default_value=0)
 @construct
 def seed():
     # Give yourself 50 tokens!
-    S['me'] = 50
+    S['me'] = 150
+    # I'm rich
 
 
 # This method will be exported so our users can call it

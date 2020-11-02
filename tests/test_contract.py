@@ -17,6 +17,12 @@ class MyTestCase(unittest.TestCase):
         # Assert token balance for 'me'
         self.assertEqual(my_token.quick_read('S', 'me'), 50)
 
+    def test_new_supply(self):
+        # Get contract reference
+        my_token = client.get_contract('my_token')
+        # Assert token balance for 'me'
+        self.assertEqual(my_token.quick_read('S', 'me'), 150)
+
     def test_transfer(self):
         # set transaction sender
         client.signer = 'me'
@@ -28,7 +34,7 @@ class MyTestCase(unittest.TestCase):
             receiver='you'
         )
         # Assert token balance for 'me'
-        self.assertEqual(my_token.quick_read('S', 'me'), 40)
+        self.assertEqual(my_token.quick_read('S', 'me'), 140)
         # Assert token balance for 'you'
         self.assertEqual(my_token.quick_read('S', 'you'), 10)
 
