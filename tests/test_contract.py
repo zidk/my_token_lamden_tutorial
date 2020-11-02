@@ -1,12 +1,14 @@
-#tests/test_contract.py
+# tests/test_contract.py
 import unittest
 
 from contracting.client import ContractingClient
+
 client = ContractingClient()
 
 with open('../my_token.py') as f:
     code = f.read()
     client.submit(code, name='my_token')
+
 
 class MyTestCase(unittest.TestCase):
     def test_supply(self):
@@ -39,7 +41,7 @@ class MyTestCase(unittest.TestCase):
         me_balance_before = my_token.quick_read('S', 'me')
         you_balance_before = my_token.quick_read('S', 'you')
 
-        # Set transfer ammount to X + 1
+        # Set transfer amount to X + 1
         transfer_amount = you_balance_before + 1
 
         # Test that the transfer method raises an Assertion
@@ -55,6 +57,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(my_token.quick_read('S', 'me'), me_balance_before)
         # Assert token balance for 'you' has not changed
         self.assertEqual(my_token.quick_read('S', 'you'), you_balance_before)
+
 
 if __name__ == '__main__':
     unittest.main()
